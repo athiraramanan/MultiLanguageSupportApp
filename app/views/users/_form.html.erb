@@ -1,0 +1,31 @@
+
+<%= form_for @user do |f| %>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@user.errors.full_messages,"") %> 
+  </h2>
+</div>
+<% end %>
+<div>
+  <%= f.label I18n.t('first_name') %>:
+  <%= f.text_field :first_name %><br />
+</div>
+<div>
+  <%= f.label I18n.t('last_name') %>:
+  <%= f.text_field :last_name %><br />
+</div>
+<div>
+  <%= f.label I18n.t('age') %>:
+  <%= f.text_field :age %><br />
+</div>
+<div>
+  <%= f.label I18n.t('email') %>:
+  <%= f.text_field :email %><br />
+</div>
+<p>
+  <%= link_to_unless I18n.locale == :en, "English", locale: :en %>
+  <%= link_to_unless I18n.locale == :ar, "Arabic", locale: :ar %>
+  <%= link_to_unless I18n.locale == :hi, "Hindi", locale: :hi %>
+</p>
+<%= f.submit I18n.t('submit') %>
+<% end %>
